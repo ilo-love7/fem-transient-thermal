@@ -1,0 +1,41 @@
+# N6 有限元瞬态热仿真：芯片/功率器件散热（SI 单位，二维单位厚度模型）
+geometry:
+  width: 0.01              # m，x 方向宽度（单位厚度 1 m）
+layers:                    # 从底（散热器）到顶（芯片）
+  Cu_base:
+    name: Cu_base
+    thickness: 0.001       # m
+    k: 400.0               # W/(m K)
+    rc: 3450000.0          # J/(m^3 K)
+  TIM:
+    name: TIM
+    thickness: 0.0002
+    k: 5.0
+    rc: 2000000.0
+  Si_die:
+    name: Si_die
+    thickness: 0.0003
+    k: 130.0
+    rc: 1650000.0
+boundary:
+  h_conv: 5000.0           # W/(m^2 K) 底面对流
+  t_amb: 25.0              # deg C
+source:
+  power_per_length: 3000.0 # W/m 线功率（单位厚度）
+  heat_source_width: 0.01  # m；=width 为严格一维验证口径
+  pulse_period: 2.0        # s
+  duty: 0.5
+numerics:
+  nx: 80
+  ny_per_layer: 8
+  theta: 1.0               # 1.0 后向 Euler / 0.5 Crank-Nicolson
+  dt: 0.01                 # s
+  t_end: 10.0              # s
+sweep:
+  k_tim_list: [1.0, 2.0, 5.0, 10.0, 20.0, 50.0]
+  h_list: [500.0, 1000.0, 2000.0, 5000.0, 10000.0, 20000.0, 50000.0]
+  dt_list: [0.04, 0.02, 0.01, 0.005, 0.0025]
+  npl_list: [2, 4, 8, 16, 32]
+  h_bi_list: [100.0, 500.0, 1000.0, 5000.0, 10000.0, 50000.0, 100000.0, 500000.0]
+design:
+  source_widths: [0.01, 0.008, 0.006, 0.004, 0.002]

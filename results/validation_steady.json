@@ -1,0 +1,28 @@
+{
+  "t_junction_fem": 98.09698032743175,
+  "t_junction_analytic": 98.09615384615384,
+  "t_junction_skfem": 98.09698032733559,
+  "t_junction_cauer": 98.09615384614273,
+  "t_junction_surface_source": 98.4423076923077,
+  "surface_vs_volume_gap_K": 0.3461538461538538,
+  "err_fem_vs_analytic": {
+    "max_abs": 0.0008436482150528946,
+    "l2_rel": 7.693186969462145e-05,
+    "peak_abs": 0.0008264812800007348,
+    "mean_abs": 0.00035585191602008787
+  },
+  "err_fem_vs_skfem": {
+    "max_abs": 9.741540907270974e-11,
+    "l2_rel": 1.2955220660162437e-11,
+    "peak_abs": 8.394351880269824e-11,
+    "mean_abs": 8.647630715760314e-11
+  },
+  "energy_balance_rel_err": 3.49094383030509e-13,
+  "r_effective": 0.024365384615384615,
+  "r_total_surface": 0.02448076923076923,
+  "bi": {
+    "Cu_base": 0.0125,
+    "TIM": 0.2,
+    "Si_die": 0.011538461538461537
+  }
+}
