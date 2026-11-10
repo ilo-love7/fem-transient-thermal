@@ -39,3 +39,25 @@ sweep:
   h_bi_list: [100.0, 500.0, 1000.0, 5000.0, 10000.0, 50000.0, 100000.0, 500000.0]
 design:
   source_widths: [0.01, 0.008, 0.006, 0.004, 0.002]
+
+# v1.1 深化参数（scripts/06-08）
+v11:
+  axisym:
+    source_ratios: [1.0, 0.9, 0.8, 0.7, 0.6, 0.5, 0.4, 0.3, 0.2, 0.15]
+    calibration_ratios: [0.8, 0.6, 0.4, 0.2]
+    nr: 80
+    nz_per_layer: 8
+    transient_ratio: 0.2
+    transient_periods: [2.0, 0.5, 0.2, 0.1, 0.05, 0.02]
+  nonlinear:
+    alpha_list: [-0.005, -0.003, -0.001, 0.0, 0.001, 0.003]
+    duty_list: [0.1, 0.2, 0.3, 0.5, 0.7, 0.9]
+    period_list: [4.0, 2.0, 0.5, 0.2, 0.05]
+    theta_list: [0.5, 0.6, 0.75, 1.0]
+    dt_list: [0.02, 0.01, 0.005, 0.0025]
+  identification:
+    k_tim_true: 5.0
+    h_true: 5000.0
+    sigma_list: [0.005, 0.02, 0.1, 0.5]
+    n_monte_carlo: 20
+    n_per_layer: 24

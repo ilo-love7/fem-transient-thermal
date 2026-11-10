@@ -1,0 +1,316 @@
+{
+  "linear_reference": {
+    "tj_C": 98.09698032743175,
+    "r_effective": 0.024365384615384615,
+    "heat_capacity": 43.45,
+    "tau_s": 1.0586759615384616
+  },
+  "nonlinear_kT": {
+    "model": "k(T) = k0*[1 + alpha*(T - T_amb)]，逐单元重心温度，Picard + 欠松弛 0.7",
+    "rows": [
+      {
+        "alpha_per_K": -0.005,
+        "tj_C": 105.16174039674263,
+        "delta_vs_linear_K": 7.0647600693108785,
+        "delta_pct_of_rise": 9.664913704594747,
+        "iterations": 23,
+        "converged": true,
+        "k_min": 3.031011975885922,
+        "k_max": 279.91067510705295,
+        "final_residual": 8.210690793930553e-09
+      },
+      {
+        "alpha_per_K": -0.003,
+        "tj_C": 101.46801600079432,
+        "delta_vs_linear_K": 3.37103567336257,
+        "delta_pct_of_rise": 4.611730413845142,
+        "iterations": 22,
+        "converged": true,
+        "k_min": 3.8694204133622123,
+        "k_max": 327.95425952312985,
+        "final_residual": 4.768864414472773e-09
+      },
+      {
+        "alpha_per_K": -0.001,
+        "tj_C": 99.03777636926827,
+        "delta_vs_linear_K": 0.9407960418365207,
+        "delta_pct_of_rise": 1.2870518557980155,
+        "iterations": 21,
+        "converged": true,
+        "k_min": 4.634382399269211,
+        "k_max": 375.98670148177484,
+        "final_residual": 4.440977363628917e-09
+      },
+      {
+        "alpha_per_K": 0.0,
+        "tj_C": 98.09698032743175,
+        "delta_vs_linear_K": 0.0,
+        "delta_pct_of_rise": 0.0,
+        "iterations": 2,
+        "converged": true,
+        "k_min": 5.0,
+        "k_max": 400.0,
+        "final_residual": 0.0
+      },
+      {
+        "alpha_per_K": 0.001,
+        "tj_C": 97.28445891586114,
+        "delta_vs_linear_K": -0.8125214115706143,
+        "delta_pct_of_rise": -1.1115663163252343,
+        "iterations": 20,
+        "converged": true,
+        "k_min": 5.3058922874632675,
+        "k_max": 424.27113939035956,
+        "final_residual": 6.967198373786232e-09
+      },
+      {
+        "alpha_per_K": 0.003,
+        "tj_C": 95.94680650767636,
+        "delta_vs_linear_K": -2.150173819755395,
+        "delta_pct_of_rise": -2.941535765395332,
+        "iterations": 20,
+        "converged": true,
+        "k_min": 5.915864348282891,
+        "k_max": 472.7303650307019,
+        "final_residual": 6.968051025069144e-09
+      }
+    ],
+    "alpha_zero_regression_K": 0.0,
+    "si_like_alpha": -0.003,
+    "si_like_delta_K": 3.37103567336257,
+    "note": "常物性假设在 Si 量级 alpha=-0.003/K 下低估结温约 3.4 K；对流热阻占 82% 使误差被稀释，但不可忽略"
+  },
+  "duty_sweep": {
+    "period_s": 2.0,
+    "rows": [
+      {
+        "duty": 0.1,
+        "closed_peak_C": 39.824473342963344,
+        "closed_swing_K": 12.116927970327602,
+        "closed_avg_C": 32.309615384615384,
+        "cauer_peak_C": 48.65111733225272,
+        "cauer_swing_K": 21.723739687161505,
+        "fem_peak_C": 48.62378696684562,
+        "fem_swing_K": 21.688696629311277,
+        "fem_avg_C": 32.46294736596802,
+        "peak_closed_err_pct": -37.247684447169775,
+        "swing_closed_err_pct": -44.13252129705143,
+        "fem_vs_cauer_peak_K": -0.02733036540709577,
+        "energy_invariant_err_K": 0.15333198135263615
+      },
+      {
+        "duty": 0.2,
+        "closed_peak_C": 52.09701279221563,
+        "closed_swing_K": 21.118919024321087,
+        "closed_avg_C": 39.61923076923077,
+        "cauer_peak_C": 59.9938635724377,
+        "cauer_swing_K": 30.752842080534556,
+        "fem_peak_C": 59.95506636384943,
+        "fem_swing_K": 30.698487184427336,
+        "fem_avg_C": 39.59881103513809,
+        "peak_closed_err_pct": -22.480442433834458,
+        "swing_closed_err_pct": -31.205342799321237,
+        "fem_vs_cauer_peak_K": -0.03879720858826374,
+        "energy_invariant_err_K": -0.020419734092676833
+      },
+      {
+        "duty": 0.3,
+        "closed_peak_C": 62.2569166922719,
+        "closed_swing_K": 27.328201481857604,
+        "closed_avg_C": 46.92884615384615,
+        "cauer_peak_C": 69.41398356349588,
+        "cauer_swing_K": 37.13380214369642,
+        "fem_peak_C": 69.37047961863927,
+        "fem_swing_K": 37.066504574893315,
+        "fem_avg_C": 47.047014991846254,
+        "peak_closed_err_pct": -16.0321975049805,
+        "swing_closed_err_pct": -26.272515320022563,
+        "fem_vs_cauer_peak_K": -0.04350394485661013,
+        "energy_invariant_err_K": 0.11816883800010203
+      },
+      {
+        "duty": 0.5,
+        "closed_peak_C": 77.63091773768596,
+        "closed_swing_K": 32.165681629218085,
+        "closed_avg_C": 61.54807692307692,
+        "cauer_peak_C": 82.49218140928481,
+        "cauer_swing_K": 41.88895642654785,
+        "fem_peak_C": 82.45476745207263,
+        "fem_swing_K": 41.81332641036642,
+        "fem_avg_C": 61.50069240850101,
+        "peak_closed_err_pct": -8.395908517792899,
+        "swing_closed_err_pct": -23.0731338771375,
+        "fem_vs_cauer_peak_K": -0.03741395721218055,
+        "energy_invariant_err_K": -0.047384514575909975
+      },
+      {
+        "duty": 0.7,
+        "closed_peak_C": 88.16743863573954,
+        "closed_swing_K": 27.32820148185761,
+        "closed_avg_C": 76.1673076923077,
+        "cauer_peak_C": 90.88981689136395,
+        "cauer_swing_K": 37.04464839610447,
+        "fem_peak_C": 90.8669506831323,
+        "fem_swing_K": 36.977688009976994,
+        "fem_avg_C": 76.11589002890081,
+        "peak_closed_err_pct": -4.098431792264629,
+        "swing_closed_err_pct": -26.095429561512454,
+        "fem_vs_cauer_peak_K": -0.022866208231647533,
+        "energy_invariant_err_K": -0.051417663406894576
+      },
+      {
+        "duty": 0.9,
+        "closed_peak_C": 95.38860847351809,
+        "closed_swing_K": 12.116927970327609,
+        "closed_avg_C": 90.78653846153846,
+        "cauer_peak_C": 96.25686895521937,
+        "cauer_swing_K": 21.49707535242753,
+        "fem_peak_C": 96.25027411255304,
+        "fem_swing_K": 21.462619593005172,
+        "fem_avg_C": 90.8761839667266,
+        "peak_closed_err_pct": -1.2093506302499164,
+        "swing_closed_err_pct": -43.54403982318819,
+        "fem_vs_cauer_peak_K": -0.006594842666331147,
+        "energy_invariant_err_K": 0.08964550518814463
+      }
+    ],
+    "max_fem_vs_cauer_K": 0.04350394485661013,
+    "max_energy_invariant_err_K": 0.15333198135263615,
+    "note": "能量守恒给出 T_avg = T_amb + D*P*R，与周期无关，单节闭式解精确满足；但单时间常数模型把薄芯片层的快模态抹掉，峰值/摆幅系统性偏低"
+  },
+  "period_sweep": {
+    "duty": 0.5,
+    "rows": [
+      {
+        "period_s": 4.0,
+        "T_over_tau": 3.778304358764531,
+        "closed_peak_C": 88.49561965092633,
+        "closed_swing_K": 53.89508545569882,
+        "cauer_peak_C": 92.112213320075,
+        "cauer_swing_K": 61.12827282104901,
+        "peak_err_pct": -5.38887557157477,
+        "swing_err_pct": -11.832801797827834
+      },
+      {
+        "period_s": 2.0,
+        "T_over_tau": 1.8891521793822654,
+        "closed_peak_C": 77.63091773768596,
+        "closed_swing_K": 32.165681629218085,
+        "cauer_peak_C": 82.49274753982667,
+        "cauer_swing_K": 41.88934126064004,
+        "peak_err_pct": -8.45642278406123,
+        "swing_err_pct": -23.2127298706377
+      },
+      {
+        "period_s": 0.5,
+        "T_over_tau": 0.47228804484556636,
+        "closed_peak_C": 65.84343984676765,
+        "closed_swing_K": 8.590725847381478,
+        "cauer_peak_C": 70.48112644887982,
+        "cauer_swing_K": 17.866141582401625,
+        "peak_err_pct": -10.196947534544613,
+        "swing_err_pct": -51.91616607447323
+      },
+      {
+        "period_s": 0.2,
+        "T_over_tau": 0.18891521793822655,
+        "closed_peak_C": 63.27291664021785,
+        "closed_swing_K": 3.449679434281812,
+        "cauer_peak_C": 67.64072296773226,
+        "cauer_swing_K": 12.231082366054594,
+        "peak_err_pct": -10.24327455896956,
+        "swing_err_pct": -71.79579589901346
+      },
+      {
+        "period_s": 0.05,
+        "T_over_tau": 0.04722880448455664,
+        "closed_peak_C": 61.97958736579478,
+        "closed_swing_K": 0.8630208854359296,
+        "cauer_peak_C": 64.20530259225926,
+        "cauer_swing_K": 5.519965873853579,
+        "peak_err_pct": -5.677077026065163,
+        "swing_err_pct": -84.36546701268932
+      }
+    ],
+    "note": "单节闭式解的摆幅误差随 T/tau 减小单调恶化（最快脉冲 -84%），因为摆动由薄芯片层快模态主导而单节模型的 tau 是整体平均"
+  },
+  "theta_study": {
+    "reference": "fine Cauer N=128 + 精确 expm 传播子（无时间离散误差）",
+    "ref_peak_C": 64.1921768195102,
+    "period_s": 0.2,
+    "duty": 0.5,
+    "peak_error_K": [
+      {
+        "dt": 0.02,
+        "theta_0.5": 0.37464778757039596,
+        "theta_0.6": 0.32959279212276726,
+        "theta_0.75": 0.2802980815921785,
+        "theta_1": 0.23127776349211615
+      },
+      {
+        "dt": 0.01,
+        "theta_0.5": 0.20568544688870816,
+        "theta_0.6": 0.202370273702428,
+        "theta_0.75": 0.1959357862065758,
+        "theta_1": 0.18503072683411403
+      },
+      {
+        "dt": 0.005,
+        "theta_0.5": 0.10914287029326886,
+        "theta_0.6": 0.1098400028971156,
+        "theta_0.75": 0.11050834515783947,
+        "theta_1": 0.11092797212083383
+      },
+      {
+        "dt": 0.0025,
+        "theta_0.5": 0.05768809361586591,
+        "theta_0.6": 0.05857385716760177,
+        "theta_0.75": 0.05981024915523392,
+        "theta_1": 0.06163646816123958
+      }
+    ],
+    "empirical_order": {
+      "theta_0.5": 0.9011790146048797,
+      "theta_0.6": 0.8358661477783443,
+      "theta_0.75": 0.7511717311819127,
+      "theta_1": 0.6461453045897031
+    },
+    "cn_be_crossover_dt_s": 0.00528344423875969,
+    "artifacts_at_dt0_02": [
+      {
+        "theta": 0.5,
+        "min_tj_C": 25.0,
+        "undershoot_below_ambient_K": 0.0,
+        "max_rise_in_off_phase_K": -0.2523331854498245,
+        "ringing_phases": 0,
+        "n_off_phases": 10
+      },
+      {
+        "theta": 0.6,
+        "min_tj_C": 25.0,
+        "undershoot_below_ambient_K": 0.0,
+        "max_rise_in_off_phase_K": -0.3342482742540831,
+        "ringing_phases": 0,
+        "n_off_phases": 10
+      },
+      {
+        "theta": 0.75,
+        "min_tj_C": 25.0,
+        "undershoot_below_ambient_K": 0.0,
+        "max_rise_in_off_phase_K": -0.369091520975271,
+        "ringing_phases": 0,
+        "n_off_phases": 10
+      },
+      {
+        "theta": 1.0,
+        "min_tj_C": 25.0,
+        "undershoot_below_ambient_K": 0.0,
+        "max_rise_in_off_phase_K": -0.3896857090233219,
+        "ringing_phases": 0,
+        "n_off_phases": 10
+      }
+    ],
+    "monotonicity": "四种 θ 在关断相内均单调下降，未观测到 CN 振铃；CN 的代价是粗步长下的峰值过冲而非非物理振荡",
+    "note": "不连续方波载荷使所有 θ 的经验收敛阶退化到 0.65~0.90（远低于 CN 的 2 阶）；粗步长下 L-稳定的 BE 更准，细步长下 CN 的二阶主项才占优"
+  }
+}

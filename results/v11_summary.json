@@ -1,0 +1,40 @@
+{
+  "version": "v1.1.0",
+  "axisym": {
+    "full_width_err_K": -0.0002634516399950826,
+    "grid_nr80_err_pct": 0.05557420882335754,
+    "closure_heldout_max_err_pct": 5.099187580043311,
+    "halfspace_underpredict_factor": 1.730547180489325,
+    "tj_3d_q02_C": 182.84235016265183,
+    "r_sp_q02_K_W": 3.5967402805351543,
+    "peak_err_before_K": -84.66978067063808,
+    "peak_err_after_K": 0.07641564585989613,
+    "tau_spread_ms": 5.593248956888867,
+    "min_valid_period_s": 0.2
+  },
+  "nonlinear": {
+    "si_like_delta_K": 3.37103567336257,
+    "alpha_zero_regression_K": 0.0,
+    "max_fem_vs_cauer_K": 0.04350394485661013,
+    "energy_invariant_max_err_K": 0.15333198135263615,
+    "worst_swing_err_pct": -84.36546701268932,
+    "theta_orders": {
+      "theta_0.5": 0.9011790146048797,
+      "theta_0.6": 0.8358661477783443,
+      "theta_0.75": 0.7511717311819127,
+      "theta_1": 0.6461453045897031
+    },
+    "theta_crossover_dt_s": 0.00528344423875969
+  },
+  "identification": {
+    "steady_fim_rank": 1,
+    "steady_fim_cond": 1.1526400126404886e+17,
+    "step_top_fim_cond": 17.937945543693544,
+    "steady_solution_spread_k": 8.62911296368887,
+    "exact_step_err_K": 9.757004056254459e-05,
+    "fim_vs_mc_gap_pct": 8.41525548722678,
+    "k_sd_top_pct": 1.4785561196226895,
+    "k_sd_dual_pct": 1.2049834155048043
+  },
+  "tests": 33
+}
