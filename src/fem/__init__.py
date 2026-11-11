@@ -1,5 +1,6 @@
-"""N6 有限元瞬态热仿真（v1.1）：手写 Galerkin FEM + Cauer 网络 +
-轴对称三维扩散修正 + 非线性物性 + 参数反辨识。"""
+"""N6 有限元瞬态热仿真（v1.2）：手写 Galerkin FEM + Cauer 网络 +
+轴对称三维扩散修正 + 非线性物性 + 参数反辨识 +
+k(T) 瞬态 Newton + 动态扩散 RC + 辐射/接触非线性边界。"""
 from .materials import Layer, ThermalCase, default_case
 from .mesh import StructuredMesh, build_mesh
 from .assembly import FEMSystem, assemble, solve_steady
@@ -24,6 +25,20 @@ from .nonlinear import (NonlinearResult, solve_nonlinear_steady,
 from .identification import (build_case, make_network, exact_step_response,
                              forward, synthesize, fit, fisher,
                              OBSERVABLES, STEP_TIMES, POWER_LEVELS)
+from .nonlinear_transient import (
+    NonlinearTransientResult, solve_nonlinear_transient, split_system,
+    k_elements, conduction_and_tangent, nonlinear_residual,
+    energy_ledger, energy_from_residual,
+    GeometryCache, build_geometry_cache, conduction_matrix)
+from .two_stage import (
+    TwoStageNetwork, build_two_stage, diffusion_time_constant,
+    diffusion_pole_closed_form, two_stage_swing, fit_tau_from_swing)
+from .boundary_nonlinear import (
+    STEFAN_BOLTZMANN, RadiativeResult, radiative_flux,
+    radiative_conductance_secant, radiative_conductance_local,
+    linearization_error, radiation_boundary, linearized_radiation_matrix,
+    solve_radiative_steady, solve_linearized_radiative_steady,
+    effective_layer_k, contact_rise_analytic, case_with_contact)
 
 __all__ = [
     "Layer", "ThermalCase", "default_case",
@@ -47,4 +62,15 @@ __all__ = [
     "theta_artifacts",
     "build_case", "make_network", "exact_step_response", "forward",
     "synthesize", "fit", "fisher", "OBSERVABLES", "STEP_TIMES", "POWER_LEVELS",
+    "NonlinearTransientResult", "solve_nonlinear_transient", "split_system",
+    "k_elements", "conduction_and_tangent", "nonlinear_residual",
+    "energy_ledger", "energy_from_residual",
+    "GeometryCache", "build_geometry_cache", "conduction_matrix",
+    "TwoStageNetwork", "build_two_stage", "diffusion_time_constant",
+    "diffusion_pole_closed_form", "two_stage_swing", "fit_tau_from_swing",
+    "STEFAN_BOLTZMANN", "RadiativeResult", "radiative_flux",
+    "radiative_conductance_secant", "radiative_conductance_local",
+    "linearization_error", "radiation_boundary", "linearized_radiation_matrix",
+    "solve_radiative_steady", "solve_linearized_radiative_steady",
+    "effective_layer_k", "contact_rise_analytic", "case_with_contact",
 ]

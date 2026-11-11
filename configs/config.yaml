@@ -61,3 +61,31 @@ v11:
     sigma_list: [0.005, 0.02, 0.1, 0.5]
     n_monte_carlo: 20
     n_per_layer: 24
+
+# v1.2 深化参数（scripts/10-12）
+v12:
+  nonlinear_transient:
+    nx: 24
+    ny_per_layer: 4
+    dt: 0.01
+    t_end: 6.0
+    alpha_list: [-0.005, -0.003, -0.001, 0.0, 0.001, 0.003, 0.005]
+    alpha_stress_list: [-0.012, -0.010, 0.010, 0.012]
+    tol_list: [0.0001, 1e-06, 1e-08, 1e-10]
+    dt_list: [0.02, 0.01, 0.005, 0.0025]
+  dynamic_diffusion:
+    source_ratio: 0.2
+    nr: 80
+    nz_per_layer: 8
+    n_cauer: 64
+    v11_reference: results/v11_spreading.json
+    calibration_period_s: 0.2
+  radiative_contact:
+    nx: 40
+    ny_per_layer: 4
+    epsilon_list: [0.0, 0.3, 0.6, 0.9]
+    h_list: [10.0, 50.0, 500.0, 5000.0]
+    power_scale_list: [1.0, 2.0]
+    target_rise_K: 300.0
+    rc_list: [0.0, 1e-06, 5e-06, 1e-05, 5e-05, 1e-04, 5e-04, 1e-03]
+    k_tim_list: [5.0, 10.0, 20.0, 50.0]
