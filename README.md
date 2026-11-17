@@ -1,6 +1,6 @@
 # 有限元瞬态热仿真：芯片/功率器件散热分析（N6）
 
-> 博远线上科研提案 N6 ｜ 传热 / 半导体热管理 ｜ 数值仿真 ｜ v1.2.0 ｜ 2026-11-11
+> 博远线上科研提案 N6 ｜ 传热 / 半导体热管理 ｜ 数值仿真 ｜ v1.3.0 ｜ 2026-11-17
 
 从零手写二维 Galerkin 有限元瞬态热传导求解器，模拟 Si 芯片 / TIM / Cu 基板三层结构在脉冲功率激励下的温度场演化，并与**解析解、第三方 FEM 库、Cauer 热阻网络**四重交叉验证。纯 CPU、无数据集，`run_all.sh` 一键复现。
 
@@ -73,7 +73,7 @@ python scripts/10_nonlinear_transient.py     # v1.2 D：k(T) 瞬态 Newton + 能
 python scripts/11_dynamic_spreading.py       # v1.2 E：动态扩散 RC + 留一泛化
 python scripts/12_radiative_contact.py       # v1.2 F：辐射边界 + 接触热阻
 python scripts/13_summary_v12.py             # v1.2 汇总表
-pytest tests/ -q                             # 68 项单测
+pytest tests/ -q                             # 94 项单测
 ```
 
 ```
@@ -89,11 +89,14 @@ src/fem/plots.py           热图/曲线/热力图/GIF
 src/fem/nonlinear_transient.py  k(T) 瞬态 Newton/Picard + 能量账本 + 几何缓存
 src/fem/two_stage.py       扩散 RC 极点 / 两阶段网络 / tau 标定
 src/fem/boundary_nonlinear.py  T^4 辐射边界 / 接触热阻折算
-scripts/00-13              校验 → v1.0 基线 → v1.1 A/B/C → v1.2 D/E/F → 汇总
-tests/                     68 项单测（v1.0 16 + v1.1 17 + v1.2 35）
-reports/                   基准评测报告（§1-§12）/ 工作记录
-results/                   JSON/CSV/NPZ + v1.0/v1.1/v1.2 汇总表
-figures/                   37 张 PNG + 温度场 GIF（v1.0 17 + v1.1 11 + v1.2 9）
+src/fem/multipole.py       Foster 多极点扩散网络 / NNLS 拟合 / 极点稳定性
+src/fem/multicondition.py  多工况联合 FIM / 周期相位观测 / 秩破判据
+src/fem/adaptive.py        非均匀网格 / 后验误差指示子 / h-加密
+scripts/00-17              校验 → v1.0 基线 → v1.1 A/B/C → v1.2 D/E/F → v1.3 E/F/G → 汇总
+tests/                     94 项单测（v1.0 16 + v1.1 17 + v1.2 35 + v1.3 26）
+reports/                   基准评测报告（§1-§16）/ 工作记录
+results/                   JSON/CSV/NPZ + v1.0/v1.1/v1.2/v1.3 汇总表
+figures/                   43 张 PNG + 温度场 GIF（v1.0 17 + v1.1 11 + v1.2 9 + v1.3 6）
 ```
 
 ## 未做项（v1.0 当时的如实标注；进展见下方 v1.1 / v1.2 章节）
@@ -151,4 +154,30 @@ python -m pytest tests/ -q    # 68 项
 
 ### v1.2 仍未做
 
-FEniCSx 原生实现、完整三维笛卡尔/非轴对称热源、实测数据标定、**多极点 / 分布参数扩散模型**（E14 证伪单极点后的最高优先级）、辐射与 k(T) 的瞬态耦合（现辐射仅稳态）、接触热阻的温度/压力依赖。
+FEniCSx 原生实现、完整三维笛卡尔/非轴对称热源、实测数据标定、~~多极点 / 分布参数扩散模型~~（**v1.3 已完成，见下**）、辐射与 k(T) 的瞬态耦合（现辐射仅稳态）、接触热阻的温度/压力依赖。
+
+---
+
+## v1.3 深化（2026-11-17）
+
+回应报告 §12.3 未做清单的三项（含最高优先级「多极点扩散」），新增 3 个纯函数模块、4 个脚本、26 项单测（累计 **94 项**）。
+
+| 深化 | 新能力 | 关键结论 |
+|---|---|---|
+| E 多极点扩散 | `multipole.py`：Foster 并联 RC 链、tau 网格 + NNLS 非负拟合、精确指数推进、极点稳定性判据 | 一次轴对称 FEM 阶跃（扣一维 Cauer）标定的 4 极点，跨 6 个周期**零样本**预测摆幅 RMSE **0.967%** vs v1.2 单极点 **31.05%**（**32.1×**）；最快 T=0.02 s 从 +73.6% 压到 +0.72%；主极点跨三个时间窗 spread 1.00；稳态热阻 3.59646 vs 参考 3.59674 K/W（差 0.008%） |
+| F 多工况可辨识 | `multicondition.py`：多功率/周期/占空比观测拼接、联合 FIM、周期相位精确推进 | 稳态多功率仍**秩1**（cond 1.15e17、相关 1.000，负结果确认）；2 周期×3 功率×2 占空比把有效秩提到 **2**、cond 降到 **35.0**（秩破 3.29e15×）、相关翻到 −0.806；60 次蒙特卡洛反辨识 k_TIM 四分位距缩小 **358×** |
+| G 自适应网格 | `adaptive.py`：非均匀网格（uniform 时与内置逐位一致）、P1 能量指示子 `Ae·|∇T|²`、按 η 标记区间插中点 | 局部热源 a/R=0.2、frac=0.75 结温误差 4.21e-4 vs 同自由度均匀 4.23e-2（**100.6×**）；但只胜 4/9 工况，frac=0.25 因 checkerboard 奇偶伪影反劣化 ~47×，全宽热源（严格 1D）零收益（~1e-5）——边界如实标注 |
+
+新增脚本 `14~17`、6 张 `v13_*.png`、3 个结果 JSON 与 `results/v13_summary_tables.md`（表 A–E）；完整推导与裁决见报告 §13–§16。
+
+```bash
+bash run_all.sh              # 00-17 全流程，纯 CPU
+python scripts/14_multipole_diffusion.py   # E16：阶跃 FEM + Foster 拟合（~6 s）
+python scripts/15_multicondition_id.py     # E17：FIM + 60 次 MC（~90 s）
+python scripts/16_adaptive_mesh.py         # E18：自适应网格扫描（~15 s）
+python -m pytest tests/ -q                 # 94 项
+```
+
+### v1.3 仍未做
+
+FEniCSx 原生实现（Win+Py3.12 无 wheel）、完整三维笛卡尔/非轴对称热源（E18 仍是二维局部加密）、真实实测数据标定（E17 只完成工况设计前置）、辐射与 k(T) 的瞬态耦合、接触热阻温度依赖、饱和物性模型、自适应策略与误差指示子联调（当前单轮标记）。

@@ -39,6 +39,13 @@ from .boundary_nonlinear import (
     linearization_error, radiation_boundary, linearized_radiation_matrix,
     solve_radiative_steady, solve_linearized_radiative_steady,
     effective_layer_k, contact_rise_analytic, case_with_contact)
+from .multipole import (FosterNetwork, log_tau_grid, fit_foster,
+                        single_pole_from_step, pole_stability)
+from .multicondition import (Condition, steady_observations,
+                             periodic_phase_observations, joint_forward,
+                             joint_fisher, condition_suite)
+from .adaptive import (build_mesh_nonuniform, gradient_indicator,
+                       interval_indicators, refine_intervals, adaptivity_study)
 
 __all__ = [
     "Layer", "ThermalCase", "default_case",
@@ -73,4 +80,9 @@ __all__ = [
     "linearization_error", "radiation_boundary", "linearized_radiation_matrix",
     "solve_radiative_steady", "solve_linearized_radiative_steady",
     "effective_layer_k", "contact_rise_analytic", "case_with_contact",
+    "FosterNetwork", "log_tau_grid", "fit_foster", "single_pole_from_step",
+    "pole_stability", "Condition", "steady_observations",
+    "periodic_phase_observations", "joint_forward", "joint_fisher",
+    "condition_suite", "build_mesh_nonuniform", "gradient_indicator",
+    "interval_indicators", "refine_intervals", "adaptivity_study",
 ]

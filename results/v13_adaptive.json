@@ -1,0 +1,181 @@
+{
+  "protocol": {
+    "coarse_nx": 24,
+    "reference_nx": 240,
+    "ny_per_layer": 8,
+    "error_metric": "|Tj_adapt - Tj_ref| / (Tj_ref - T_amb)",
+    "indicator": "eta_e = Ae * |grad T_e|^2 (P1 精确)",
+    "source_ratios": [
+      1.0,
+      0.6,
+      0.4,
+      0.2
+    ],
+    "refine_fractions": [
+      0.25,
+      0.5,
+      0.75
+    ]
+  },
+  "scan": [
+    {
+      "source_ratio": 1.0,
+      "refine_fraction": 0.25,
+      "adaptive_nx": 30,
+      "rel_err_coarse": 5.121621045637932e-06,
+      "rel_err_adaptive": 1.8793068386514873e-05,
+      "rel_err_uniform_same_dof": 1.880989819933357e-05,
+      "speedup_over_uniform": 1.0008955329950682,
+      "refined_near_heat_source": false,
+      "interval_eta_max_over_min": 103912.97460329077,
+      "t_junction_ref_C": 98.09665188078141
+    },
+    {
+      "source_ratio": 1.0,
+      "refine_fraction": 0.5,
+      "adaptive_nx": 36,
+      "rel_err_coarse": 5.121621045637932e-06,
+      "rel_err_adaptive": 5.110291519813798e-06,
+      "rel_err_uniform_same_dof": 5.181424070711995e-06,
+      "speedup_over_uniform": 1.0139194702733492,
+      "refined_near_heat_source": false,
+      "interval_eta_max_over_min": 103912.97460329077,
+      "t_junction_ref_C": 98.09665188078141
+    },
+    {
+      "source_ratio": 1.0,
+      "refine_fraction": 0.75,
+      "adaptive_nx": 42,
+      "rel_err_coarse": 5.121621045637932e-06,
+      "rel_err_adaptive": 1.869675847289854e-05,
+      "rel_err_uniform_same_dof": 1.87696992333668e-05,
+      "speedup_over_uniform": 1.003901251683493,
+      "refined_near_heat_source": false,
+      "interval_eta_max_over_min": 103912.97460329077,
+      "t_junction_ref_C": 98.09665188078141
+    },
+    {
+      "source_ratio": 0.6,
+      "refine_fraction": 0.25,
+      "adaptive_nx": 30,
+      "rel_err_coarse": 0.02277233116306022,
+      "rel_err_adaptive": 0.023248652273968818,
+      "rel_err_uniform_same_dof": 0.00015538363082759493,
+      "speedup_over_uniform": 0.006683554340978971,
+      "refined_near_heat_source": false,
+      "interval_eta_max_over_min": 1104.7130774881707,
+      "t_junction_ref_C": 105.19956664155049
+    },
+    {
+      "source_ratio": 0.6,
+      "refine_fraction": 0.5,
+      "adaptive_nx": 36,
+      "rel_err_coarse": 0.02277233116306022,
+      "rel_err_adaptive": 0.009653505480215418,
+      "rel_err_uniform_same_dof": 0.014902355913230612,
+      "speedup_over_uniform": 1.5437248099949352,
+      "refined_near_heat_source": true,
+      "interval_eta_max_over_min": 1104.7130774881707,
+      "t_junction_ref_C": 105.19956664155049
+    },
+    {
+      "source_ratio": 0.6,
+      "refine_fraction": 0.75,
+      "adaptive_nx": 42,
+      "rel_err_coarse": 0.02277233116306022,
+      "rel_err_adaptive": 0.011324480715840525,
+      "rel_err_uniform_same_dof": 0.0065721366336706265,
+      "speedup_over_uniform": 0.5803477261855914,
+      "refined_near_heat_source": true,
+      "interval_eta_max_over_min": 1104.7130774881707,
+      "t_junction_ref_C": 105.19956664155049
+    },
+    {
+      "source_ratio": 0.4,
+      "refine_fraction": 0.25,
+      "adaptive_nx": 30,
+      "rel_err_coarse": 0.033751391815609176,
+      "rel_err_adaptive": 0.03258423124238276,
+      "rel_err_uniform_same_dof": 0.0003240001881036601,
+      "speedup_over_uniform": 0.009943465773169097,
+      "refined_near_heat_source": true,
+      "interval_eta_max_over_min": 1008.3443424641557,
+      "t_junction_ref_C": 111.42958645019279
+    },
+    {
+      "source_ratio": 0.4,
+      "refine_fraction": 0.5,
+      "adaptive_nx": 36,
+      "rel_err_coarse": 0.033751391815609176,
+      "rel_err_adaptive": 0.006848958183054443,
+      "rel_err_uniform_same_dof": 0.023165685668086907,
+      "speedup_over_uniform": 3.3823663466661236,
+      "refined_near_heat_source": true,
+      "interval_eta_max_over_min": 1008.3443424641557,
+      "t_junction_ref_C": 111.42958645019279
+    },
+    {
+      "source_ratio": 0.4,
+      "refine_fraction": 0.75,
+      "adaptive_nx": 42,
+      "rel_err_coarse": 0.033751391815609176,
+      "rel_err_adaptive": 0.019152078166269623,
+      "rel_err_uniform_same_dof": 0.009498040085174382,
+      "speedup_over_uniform": 0.49592738723791346,
+      "refined_near_heat_source": true,
+      "interval_eta_max_over_min": 1008.3443424641557,
+      "t_junction_ref_C": 111.42958645019279
+    },
+    {
+      "source_ratio": 0.2,
+      "refine_fraction": 0.25,
+      "adaptive_nx": 30,
+      "rel_err_coarse": 0.03412361741797532,
+      "rel_err_adaptive": 0.030794617096842235,
+      "rel_err_uniform_same_dof": 0.0006623794596861996,
+      "speedup_over_uniform": 0.021509585834536056,
+      "refined_near_heat_source": true,
+      "interval_eta_max_over_min": 973.2048141540995,
+      "t_junction_ref_C": 120.94646511575411
+    },
+    {
+      "source_ratio": 0.2,
+      "refine_fraction": 0.5,
+      "adaptive_nx": 36,
+      "rel_err_coarse": 0.03412361741797532,
+      "rel_err_adaptive": 0.019947160520601796,
+      "rel_err_uniform_same_dof": 0.025441253722272246,
+      "speedup_over_uniform": 1.2754323451699328,
+      "refined_near_heat_source": true,
+      "interval_eta_max_over_min": 973.2048141540995,
+      "t_junction_ref_C": 120.94646511575411
+    },
+    {
+      "source_ratio": 0.2,
+      "refine_fraction": 0.75,
+      "adaptive_nx": 42,
+      "rel_err_coarse": 0.03412361741797532,
+      "rel_err_adaptive": 0.0004209592287751699,
+      "rel_err_uniform_same_dof": 0.042336311251355646,
+      "speedup_over_uniform": 100.57104906462817,
+      "refined_near_heat_source": true,
+      "interval_eta_max_over_min": 973.2048141540995,
+      "t_junction_ref_C": 120.94646511575411
+    }
+  ],
+  "verdict": {
+    "local_source_adaptive_wins_count": 4,
+    "local_source_total": 9,
+    "best": {
+      "source_ratio": 0.2,
+      "refine_fraction": 0.75,
+      "speedup_over_uniform": 100.57104906462817,
+      "rel_err_adaptive": 0.0004209592287751699,
+      "rel_err_uniform": 0.042336311251355646
+    },
+    "full_width_max_rel_err": 1.880989819933357e-05,
+    "full_width_zero_gain": true,
+    "note": "全宽热源=严格1D，x 加密在数值精度内无收益（负结果）"
+  },
+  "wall_s": 14.434700727462769
+}
